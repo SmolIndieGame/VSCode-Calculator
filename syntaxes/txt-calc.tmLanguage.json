@@ -1,0 +1,52 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Txt Calc",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#numbers"
+		},
+		{
+			"include": "#comments"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control.txt-calc",
+					"match": "\\b(if|while|for|return)\\b"
+				},
+				{
+					"name": "support.function.txt-calc",
+					"match": "(sin|cos|tan|log|ln)"
+				}
+			]
+		},
+		"comments": {
+			"name": "comment.line.txt-calc",
+			"match": "\/\/.*$"
+		},
+		"numbers": {
+			"name": "constant.numeric.txt-calc",
+			"match": "\\d*\\.?\\d+"
+		},
+		"strings": {
+			"name": "string.quoted.double.txt-calc",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.txt-calc",
+					"match": "\\\\."
+				}
+			]
+		}
+	},
+	"scopeName": "source.txt-calc"
+}
