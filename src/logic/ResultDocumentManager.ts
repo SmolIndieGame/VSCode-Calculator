@@ -1,4 +1,3 @@
-import exp = require("constants");
 import * as vscode from "vscode";
 import ResultDocument from "./ResultDocument";
 

@@ -1,8 +1,14 @@
+import { getTokenList } from "../syntax/TokenParser";
 import EvaluationResult from "./EvaluationResult";
 
-export default function (line: string): EvaluationResult {
-    const arr = line.split('+');
-    let sum = 0;
-    arr.forEach(s => sum += parseInt(s));
-    return sum.toString();
+export function evaluate(line: string): EvaluationResult {
+    const respond = getTokenList(line);
+    if ('message' in respond) {
+        return respond.message;
+    }
+
+    const tokens = respond.map(x => {
+        return line.substring(x.startAt, x.startAt + x.length);
+    });
+    return tokens.join("   ");
 }

@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import EvaluationResult from './calculation/EvaluationResult';
-import Evaluator from './calculation/Evaluator';
+import { evaluate } from './calculation/Evaluator';
 
 interface DirtyResult {
     dirty: boolean;
@@ -25,7 +25,7 @@ export default class {
     public getResult(line: string, lineIndex: number): EvaluationResult {
         const result = this.results[lineIndex];
         if (result.dirty) {
-            result.result = Evaluator(line);
+            result.result = evaluate(line);
             result.dirty = false;
         }
         return result.result!;
